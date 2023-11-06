@@ -29,7 +29,7 @@ def iniciar_sesion_y_obtener_cookies():
         username_input.send_keys("username")
         continue_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "continueButtonMyLux")))
         continue_button.click()
-        password_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "password")))
+        password_input = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "password")))
         password_input.send_keys("password")
         login_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "next")))
         login_button.click()
