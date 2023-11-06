@@ -26,11 +26,11 @@ def iniciar_sesion_y_obtener_cookies():
     try:
         driver.get("https://my.essilorluxottica.com/")
         username_input = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "signInName")))
-        username_input.send_keys("gonza.0001407228.es")
+        username_input.send_keys("username")
         continue_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "continueButtonMyLux")))
         continue_button.click()
         password_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "password")))
-        password_input.send_keys("UanAr6PJRuqr!77y")
+        password_input.send_keys("password")
         login_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "next")))
         login_button.click()
         WebDriverWait(driver, 60).until(lambda d: "https://my.essilorluxottica.com/myl-es/es-ES/homepage" in d.current_url)
@@ -76,7 +76,7 @@ def get_product_data(product_name, cookies):
     return None
 
 def descargar_y_convertir_imagen(url, sku):
-    path_to_images = '/home/magento/public_html/pub/media/products/'
+    path_to_images = '/your/directory/'
     os.makedirs(path_to_images, exist_ok=True)
     sanitized_sku = sku.replace('/', '_').replace(' ', '_')
     file_name = f"{sanitized_sku}.avif"
@@ -92,10 +92,10 @@ def descargar_y_convertir_imagen(url, sku):
     return None
 
 def send_email(subject, body, receiver_email):
-    sender_email = "admin@bluenty.com"
-    password = "6,{aKAjcu$^593C"
+    sender_email = "test@test.com"
+    password = "password"
     receiver_email = receiver_email
-    smtp_server = "mail.bluenty.com"
+    smtp_server = "smtp.server.com"
     port = 465  # Para usar con SSL
 
     message = MIMEMultipart()
@@ -157,5 +157,5 @@ current_time = datetime.now().strftime("%H:%M:%S")
 send_email(
     "Terminado extraccion datos luxottica",
     f"Ya hemos terminado con la extraccion de todas las fotos. Hora de finalización: {current_time}",
-    "admin@bluenty.com"
+    "test@test.com"
 )
